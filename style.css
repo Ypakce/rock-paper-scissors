@@ -1,4 +1,4 @@
-.main-block {
+body {
     min-height: 95vh;
     display: flex;
     flex: auto;
@@ -12,7 +12,7 @@
     min-width: 10px;
 }
 
-.title-block {
+h1 {
     margin: 20px;
     font-weight: bold;
     font-size: 40px;
@@ -47,7 +47,7 @@
     display: flex;
     justify-content: center;
 }
-.results-text{
+.result-text{
     font-size: 25px;
     margin: 10px;
 }

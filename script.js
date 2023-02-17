@@ -1,80 +1,86 @@
 const game_choises = ["Rock", "Paper", "Scissors"];
 
-function capitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
+let playerCount = 0;
+let computerCount = 0;
+
+const res_text = document.querySelector(".result-text");
+const player_res = document.querySelector(".player-result");
+const comp_res = document.querySelector(".comp-result");
+const rock_button = document.querySelector(".rock-button");
+rock_button.addEventListener("click", e => {
+    playRound("Rock");
+    playGame();});
+const paper_button = document.querySelector(".paper-button");
+paper_button.addEventListener("click", e => {
+    playRound("Paper");
+    playGame();});
+const scissors_button = document.querySelector(".scissors-button");
+scissors_button.addEventListener("click", e => {
+    playRound("Scissors");
+    playGame();});
+
 
 function getComputerChoice(){
     let num = Math.floor(Math.random() * 3);
     return game_choises[num];
 }
 
-function playRound(playerSelection, computerSelection){
-    playerSelection = playerSelection.toLowerCase();
-    playerSelection = capitalizeFirstLetter(playerSelection);
-
-    if(playerSelection == computerSelection){
-        return "Tie!";
+function playRound(playerSelection){
+    let computerChoice = getComputerChoice();
+    if(playerSelection == computerChoice){
+        res_text.textContent = "Tie!";
     }
     else if(playerSelection == "Rock"){
-        if(computerSelection == "Paper"){
-            return "You lose! Paper beats Rock";
+        if(computerChoice == "Paper"){
+            res_text.textContent = "You lose! Paper beats Rock";
+            computerCount++;
         }
-        else if(computerSelection == "Scissors"){
-            return "You win! Rock beats Scissors";
+        else if(computerChoice == "Scissors"){
+            res_text.textContent = "You win! Rock beats Scissors";
+            playerCount++;
         }
     }
     else if(playerSelection == "Paper"){
-        if(computerSelection == "Rock"){
-            return "You win! Paper beats Rock";
+        if(computerChoice == "Rock"){
+            res_text.textContent = "You win! Paper beats Rock";
+            playerCount++;
         }
-        else if(computerSelection == "Scissors"){
-            return "You lose! Scissors beats Paper";
+        else if(computerChoice == "Scissors"){
+            res_text.textContent = "You lose! Scissors beats Paper";
+            computerCount++;
         }
     }
     else if(playerSelection == "Scissors"){
-        if(computerSelection == "Rock"){
-            return "You lose! Rock beats Scissors";
-        }
-        else if(computerSelection == "Paper"){
-            return "You win! Scissors beats Paper";
-        }
-    }
-    else{
-        return "Invalid choice";
-    }
-}
-
-function game(){
-    let playerCount = 0;
-    let computerCount = 0;
-
-    for(let i=1; i<=5; i++){
-        let playerChoice = prompt("What is your choice: " + game_choises);
-        let computerChoice = getComputerChoice();
-        let round_result = playRound(playerChoice, computerChoice);
-
-        console.log(round_result);
-
-        if((round_result == "You win! Rock beats Scissors") || (round_result == "You win! Paper beats Rock") || (round_result == "You win! Scissors beats Paper")){
-            playerCount++;
-        }
-        else if((round_result == "You lose! Paper beats Rock") || (round_result == "You lose! Scissors beats Paper") || (round_result == "You lose! Rock beats Scissors")){
+        if(computerChoice == "Rock"){
+            res_text.textContent = "You lose! Rock beats Scissors";
             computerCount++;
         }
-
-        console.log("Player: " + playerCount + "\t Computer: " + computerCount);
-    }
-
-    if(playerCount < computerCount){
-        alert(`You Lost! Player: ${playerCount} Computer: ${computerCount}`);
-    }
-    else if(playerCount > computerCount){
-        alert(`You Won! Player: ${playerCount} Computer: ${computerCount}`);
+        else if(computerChoice == "Paper"){
+            res_text.textContent = "You win! Scissors beats Paper";
+            playerCount++;
+        }
     }
     else{
-        alert(`Tie! Player: ${playerCount} Computer: ${computerCount}`);
+        res_text.textContent = "Invalid choice";
     }
+    player_res.textContent = playerCount;
+    comp_res.textContent = computerCount;
 }
 
-game();
+function playGame(){
+    if(computerCount == 5){
+        res_text.textContent = "You Won the Game! Congrats";
+        computerCount = 0;
+        playerCount = 0;
+        player_res.textContent = 0;
+        comp_res.textContent = 0;
+    }
+    else if(playerCount == 5){
+        res_text.textContent = "You Lost the game:/";
+        computerCount = 0;
+        playerCount = 0;
+        player_res.textContent = 0;
+        comp_res.textContent = 0;
+    }
+
+}
