@@ -1,0 +1,44 @@
+.main-block {
+    min-height: 95vh;
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: large;
+}
+.main-block div{
+    min-height: 10px;
+    min-width: 10px;
+}
+
+.title-block {
+    margin: 20px;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.button-block {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-block div{
+    margin: 40px;
+    border: 7px solid black;
+    padding: 10px;
+    font-size: 25px;
+}
+
+.results-block{
+    display: flex;
+    justify-content: space-between;
+}
+.results-block div{
+    font-size: 25px;
+    margin: 15px;
+}
+.comp-result, .player-result{
+    display: flex;
+    justify-content: center;
+}
