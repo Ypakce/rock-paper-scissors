@@ -76,7 +76,7 @@ function playGame(){
         comp_res.textContent = 0;
     }
     else if(playerCount == 5){
-        res_text.textContent = "You Lost the game:/";
+        res_text.textContent = "You Lost the game:/ Try Again";
         computerCount = 0;
         playerCount = 0;
         player_res.textContent = 0;
