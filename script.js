@@ -69,14 +69,14 @@ function playRound(playerSelection){
 
 function playGame(){
     if(computerCount == 5){
-        res_text.textContent = "You Won the Game! Congrats";
+        res_text.textContent = "You Lost the game:/ Try Again";
         computerCount = 0;
         playerCount = 0;
         player_res.textContent = 0;
         comp_res.textContent = 0;
     }
     else if(playerCount == 5){
-        res_text.textContent = "You Lost the game:/ Try Again";
+        res_text.textContent = "You Won the Game! Congrats";
         computerCount = 0;
         playerCount = 0;
         player_res.textContent = 0;
